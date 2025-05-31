@@ -106,6 +106,45 @@ document.getElementById("contact-form").addEventListener("submit", function(even
             }
         }
 
+        //draggable whatup icons
+        let isDragging = false;
+            let offsetX, offsetY;
+            const whatsappIcon = document.getElementById('whatsappIcon');
+
+            whatsappIcon.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                offsetX = e.clientX - whatsappIcon.getBoundingClientRect().left;
+                offsetY = e.clientY - whatsappIcon.getBoundingClientRect().top;
+                whatsappIcon.style.cursor = 'grabbing';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const x = e.clientX - offsetX;
+                    const y = e.clientY - offsetY;
+                    whatsappIcon.style.left = `${x}px`;
+                    whatsappIcon.style.top = `${y}px`;
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                whatsappIcon.style.cursor = 'grab';
+            });
+
+            //link overlay of my work
+        
+    document.querySelectorAll('[data-overlay]').forEach(card => {
+        card.addEventListener('click', () => {
+            // Toggle the class on tap/click
+            card.classList.toggle('show-overlay');
+        });
+    });
+    //al chat]
+    
+
+    
+
 
 
 
